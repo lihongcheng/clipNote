@@ -1,0 +1,14 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    avoid_print: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    prefer_final_locals: true
+    use_super_parameters: true
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "lib/l10n/app_localizations*.dart"

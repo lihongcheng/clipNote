@@ -1,0 +1,1 @@
+Fonts directory - optional. System fonts will be used if empty.
