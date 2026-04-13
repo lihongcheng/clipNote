@@ -303,6 +303,8 @@ class _LogoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final surfaceColor =
         isDark ? const Color(0xFF1E1B2E) : const Color(0xFFEDE9FF);
+    final lineColor =
+        isDark ? const Color(0xFF4A3F70) : const Color(0xFFBDB0E0);
 
     return Container(
       width: 120,
@@ -327,18 +329,118 @@ class _LogoCard extends StatelessWidget {
           ),
         ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Image.asset(
-            'assets/icons/clipnote_app_icon.png',
-            fit: BoxFit.contain,
-          ),
+      child: CustomPaint(
+        painter: _ClipboardPainter(
+          primaryColor: primaryColor,
+          lineColor: lineColor,
+          isDark: isDark,
         ),
       ),
     );
   }
+}
+
+// ── Clipboard icon painter ────────────────────────────────────────────────────
+class _ClipboardPainter extends CustomPainter {
+  final Color primaryColor;
+  final Color lineColor;
+  final bool isDark;
+
+  const _ClipboardPainter(
+      {required this.primaryColor,
+      required this.lineColor,
+      required this.isDark});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+
+    final bodyPaint = Paint()
+      ..color = isDark
+          ? const Color(0xFF2A2545)
+          : const Color(0xFFDDD6FF);
+    final borderPaint = Paint()
+      ..color = primaryColor.withValues(alpha: 0.30)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.2;
+    final accentPaint = Paint()..color = primaryColor;
+    final dimPaint = Paint()..color = lineColor;
+    final bgPaint = Paint()
+      ..color = isDark ? const Color(0xFF100E1A) : const Color(0xFFF8F7FF);
+
+    final cw = w * 0.56;
+    final ch = h * 0.62;
+    final cl = (w - cw) / 2;
+    final ct = (h - ch) / 2 + h * 0.04;
+
+    // Clipboard body
+    final bodyRect = RRect.fromLTRBR(cl, ct, cl+cw, ct+ch, Radius.circular(cw * 0.13));
+    canvas.drawRRect(bodyRect, bodyPaint);
+    canvas.drawRRect(bodyRect, borderPaint);
+
+    // Clip bar
+    final bw = cw * 0.46;
+    final bh = h * 0.072;
+    final bl = (w - bw) / 2;
+    final bt = ct - bh / 2;
+    canvas.drawRRect(
+        RRect.fromLTRBR(bl, bt, bl+bw, bt+bh, Radius.circular(bh / 2)),
+        accentPaint);
+
+    // Clip hole
+    final hw = w * 0.088;
+    canvas.drawCircle(Offset(w/2, bt + bh/2), hw/2, bgPaint);
+
+    // Lines
+    final lx = cl + cw * 0.14;
+    final lw2 = cw * 0.72;
+    final lh = math.max(h * 0.038, 3.0);
+    final gap = h * 0.082;
+    final ly0 = ct + ch * 0.20;
+
+    final lineConfigs = [
+      (1.00, accentPaint),
+      (0.72, dimPaint),
+      (0.86, dimPaint),
+      (0.60, Paint()..color = primaryColor.withValues(alpha: 0.65)),
+      (0.50, dimPaint),
+    ];
+
+    for (var i = 0; i < lineConfigs.length; i++) {
+      final (wf, paint) = lineConfigs[i];
+      final ly = ly0 + i * gap;
+      canvas.drawRRect(
+          RRect.fromLTRBR(lx, ly, lx + lw2*wf, ly+lh, Radius.circular(lh/2)),
+          paint);
+    }
+
+    // Check badge
+    final br = w * 0.165;
+    final bx = cl + cw - br * 0.30;
+    final byy = ct + ch - br * 0.30;
+    // shadow
+    canvas.drawCircle(Offset(bx, byy), br + 3,
+        Paint()..color = primaryColor.withValues(alpha: 0.25));
+    canvas.drawCircle(Offset(bx, byy), br, accentPaint);
+    // checkmark
+    final ck = br * 0.50;
+    final checkPaint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = math.max(w * 0.030, 2.5)
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
+      ..style = PaintingStyle.stroke;
+    final path = Path()
+      ..moveTo(bx - ck*0.52, byy + ck*0.05)
+      ..lineTo(bx - ck*0.08, byy + ck*0.52)
+      ..lineTo(bx + ck*0.62, byy - ck*0.52);
+    canvas.drawPath(path, checkPaint);
+  }
+
+  @override
+  bool shouldRepaint(_ClipboardPainter old) =>
+      old.primaryColor != primaryColor || old.isDark != isDark;
 }
 
 // ── Ambient glow blob ─────────────────────────────────────────────────────────

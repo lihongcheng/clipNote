@@ -10,21 +10,11 @@ import 'features/settings/providers/settings_provider.dart';
 import 'l10n/app_localizations.dart';
 import 'shared/theme/app_theme.dart';
 import 'shared/widgets/main_shell.dart';
+import 'shared/widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Init services
-  await SettingsService.instance.init();
-  await DatabaseService.instance.init();
-  await NotificationService.instance.init();
-  await RewardedAdService.instance.init();
-
-  runApp(
-    const ProviderScope(
-      child: ClipNoteApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: ClipNoteApp()));
 }
 
 class ClipNoteApp extends ConsumerWidget {
@@ -48,7 +38,20 @@ class ClipNoteApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const MainShell(),
+      // Named routes so SplashScreen can push /home
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (_) => SplashScreen(
+              onInit: () async {
+                // All heavy initialization moved here from main()
+                await SettingsService.instance.init();
+                await DatabaseService.instance.init();
+                await NotificationService.instance.init();
+                await RewardedAdService.instance.init();
+              },
+            ),
+        '/home': (_) => const MainShell(),
+      },
     );
   }
 }

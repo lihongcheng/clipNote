@@ -133,7 +133,7 @@ const TodoItemSchema = CollectionSchema(
   getId: _todoItemGetId,
   getLinks: _todoItemGetLinks,
   attach: _todoItemAttach,
-  version: '3.1.0+1',
+  version: '3.3.2',
 );
 
 int _todoItemEstimateSize(

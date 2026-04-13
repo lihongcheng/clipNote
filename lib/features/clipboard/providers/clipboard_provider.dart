@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 import '../../../core/database/database_service.dart';
 import '../../../core/database/settings_service.dart';
@@ -112,8 +112,15 @@ class ClipboardNotifier extends Notifier<List<ClipboardItem>> {
   }
 
   Future<void> _enforceHistoryLimit() async {
-    final max = SettingsService.instance.settings.maxClipboardHistory;
+    final settings = SettingsService.instance.settings;
+    var max = settings.maxClipboardHistory;
     if (max <= 0) return;
+
+    // Enforce Pro limit: non-Pro users can only use up to 50
+    final proLimit = 50;
+    if (!settings.isPro && max > proLimit) {
+      max = proLimit;
+    }
 
     final items = await _isar.clipboardItems
         .where()

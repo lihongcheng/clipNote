@@ -365,7 +365,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get proPaidHistoryTitle => '更大的剪贴板历史';
 
   @override
-  String get proPaidHistorySubtitle => '解锁 1000 和 2000 条历史上限。';
+  String get proPaidHistorySubtitle => '解锁最高2000条剪贴板历史。';
 
   @override
   String get proPaidFutureTitle => 'AI 和加密保险箱';
@@ -386,6 +386,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get proRestorePurchase => '恢复购买';
+
+  @override
+  String get proRestorePurchaseSuccess => '购买已恢复！';
+
+  @override
+  String get proRestorePurchaseNotFound => '未找到购买记录。';
 
   @override
   String get proDebugSimulate => '调试：模拟解锁 Pro';
@@ -896,7 +902,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get proPaidHistoryTitle => '更大的剪貼簿歷史';
 
   @override
-  String get proPaidHistorySubtitle => '解鎖 1000 與 2000 筆歷史上限。';
+  String get proPaidHistorySubtitle => '解鎖最高2000筆剪貼簿歷史。';
 
   @override
   String get proPaidFutureTitle => 'AI 與加密保險箱';
@@ -917,6 +923,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get proRestorePurchase => '恢復購買';
+
+  @override
+  String get proRestorePurchaseSuccess => '購買已恢復！';
+
+  @override
+  String get proRestorePurchaseNotFound => '未找到購買記錄。';
 
   @override
   String get proDebugSimulate => '除錯：模擬解鎖 Pro';

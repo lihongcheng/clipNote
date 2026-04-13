@@ -367,7 +367,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get proPaidHistoryTitle => '大きなクリップボード履歴';
 
   @override
-  String get proPaidHistorySubtitle => '履歴上限 1000 件と 2000 件を解放します。';
+  String get proPaidHistorySubtitle => '最大2000件の履歴を解放します。';
 
   @override
   String get proPaidFutureTitle => 'AI と暗号化ボルト';
@@ -388,6 +388,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get proRestorePurchase => '購入を復元';
+
+  @override
+  String get proRestorePurchaseSuccess => '購入を復元しました！';
+
+  @override
+  String get proRestorePurchaseNotFound => '購入記録が見つかりません。';
 
   @override
   String get proDebugSimulate => 'デバッグ: Pro 解放をシミュレート';

@@ -386,13 +386,21 @@ class _MaxHistoryTile extends StatelessWidget {
   const _MaxHistoryTile(
       {required this.settings, required this.l10n, required this.ref});
 
+  /// Returns the effective max history, considering Pro status.
+  int get _effectiveMax {
+    final saved = settings.maxClipboardHistory;
+    const proLimit = 50;
+    if (!settings.isPro && saved > proLimit) return proLimit;
+    return saved;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: const Icon(Icons.history_rounded),
       title: Text(l10n.settingsMaxHistory),
       trailing: Row(mainAxisSize: MainAxisSize.min, children: [
-        Text('${settings.maxClipboardHistory}',
+        Text('${_effectiveMax}',
             style: const TextStyle(fontWeight: FontWeight.w500)),
         const SizedBox(width: 4),
         const Icon(Icons.chevron_right_rounded, size: 20),
@@ -407,15 +415,15 @@ class _MaxHistoryTile extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: Text(l10n.settingsMaxHistory,
                       style: Theme.of(context).textTheme.titleMedium)),
-              for (final v in [100, 200, 500, 1000, 2000])
+              for (final v in [50, 100, 200, 500, 1000, 2000])
                 ListTile(
-                  title: Text('$v${v > 500 ? ' (Pro)' : ''}'),
-                  trailing: settings.maxClipboardHistory == v
+                  title: Text('$v${v >= 100 ? ' (Pro)' : ''}'),
+                  trailing: _effectiveMax == v
                       ? Icon(Icons.check_rounded,
                           color: Theme.of(context).colorScheme.primary)
                       : null,
                   onTap: () {
-                    if (v > 500 && !settings.isPro) {
+                    if (v >= 100 && !settings.isPro) {
                       Navigator.pop(ctx);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

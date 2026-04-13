@@ -367,7 +367,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get proPaidHistoryTitle => '대용량 클립보드 기록';
 
   @override
-  String get proPaidHistorySubtitle => '1000개와 2000개 기록 한도를 해제합니다.';
+  String get proPaidHistorySubtitle => '최대 2000개 기록 한도를 해제합니다.';
 
   @override
   String get proPaidFutureTitle => 'AI 및 암호화 보관함';
@@ -388,6 +388,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get proRestorePurchase => '구매 복원';
+
+  @override
+  String get proRestorePurchaseSuccess => '구매가 복원되었습니다!';
+
+  @override
+  String get proRestorePurchaseNotFound => '구매 기록이 없습니다.';
 
   @override
   String get proDebugSimulate => '디버그: Pro 잠금 해제 시뮬레이션';

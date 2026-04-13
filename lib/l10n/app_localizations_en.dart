@@ -376,8 +376,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proPaidHistoryTitle => 'Large clipboard history';
 
   @override
-  String get proPaidHistorySubtitle =>
-      'Unlock 1000 and 2000 item history caps.';
+  String get proPaidHistorySubtitle => 'Unlock up to 2000 item history.';
 
   @override
   String get proPaidFutureTitle => 'AI and encrypted vault';
@@ -399,6 +398,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proRestorePurchase => 'Restore purchase';
+
+  @override
+  String get proRestorePurchaseSuccess => 'Purchase restored successfully!';
+
+  @override
+  String get proRestorePurchaseNotFound => 'No previous purchase found.';
 
   @override
   String get proDebugSimulate => 'Debug: simulate Pro unlock';

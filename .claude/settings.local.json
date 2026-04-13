@@ -6,7 +6,11 @@
       "Bash(dart run:*)",
       "Bash(ls -la /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-*/)",
       "Bash(cd /Users/lihongcheng/Documents/apps/clipnote/android && ./gradlew clean)",
-      "Bash(flutter build:*)"
+      "Bash(flutter build:*)",
+      "Bash(cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-mdpi/splash_logo.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-mdpi/ && cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-mdpi/splash_logo_night.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-mdpi/)",
+      "Bash(cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-hdpi/splash_logo.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-hdpi/ && cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-hdpi/splash_logo_night.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-hdpi/)",
+      "Bash(cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-xhdpi/splash_logo.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-xhdpi/ && cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-xhdpi/splash_logo_night.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-xhdpi/)",
+      "Bash(cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-xxhdpi/splash_logo.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-xxhdpi/ && cp /Users/lihongcheng/Documents/apps/splash_update/android/app/src/main/res/mipmap-xxhdpi/splash_logo_night.png /Users/lihongcheng/Documents/apps/clipnote/android/app/src/main/res/mipmap-xxhdpi/)"
     ]
   }
 }

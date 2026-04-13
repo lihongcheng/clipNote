@@ -802,7 +802,7 @@ abstract class AppLocalizations {
   /// No description provided for @proPaidHistorySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Unlock 1000 and 2000 item history caps.'**
+  /// **'Unlock up to 2000 item history.'**
   String get proPaidHistorySubtitle;
 
   /// No description provided for @proPaidFutureTitle.
@@ -840,6 +840,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Restore purchase'**
   String get proRestorePurchase;
+
+  /// No description provided for @proRestorePurchaseSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase restored successfully!'**
+  String get proRestorePurchaseSuccess;
+
+  /// No description provided for @proRestorePurchaseNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No previous purchase found.'**
+  String get proRestorePurchaseNotFound;
 
   /// No description provided for @proDebugSimulate.
   ///

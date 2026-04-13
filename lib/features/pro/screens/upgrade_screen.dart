@@ -112,8 +112,21 @@ class UpgradeScreen extends ConsumerWidget {
           OutlinedButton(
             onPressed: state.purchasePending
                 ? null
-                : () =>
-                    ref.read(monetizationProvider.notifier).restorePurchases(),
+                : () async {
+                    await ref
+                        .read(monetizationProvider.notifier)
+                        .restorePurchases();
+                    if (context.mounted) {
+                      final settings = ref.read(settingsProvider);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(settings.isPro
+                              ? l10n.proRestorePurchaseSuccess
+                              : l10n.proRestorePurchaseNotFound),
+                        ),
+                      );
+                    }
+                  },
             child: Text(l10n.proRestorePurchase),
           ),
           if (kDebugMode) ...[

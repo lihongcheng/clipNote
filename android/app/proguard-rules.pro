@@ -17,3 +17,9 @@
 
 # Share Plus
 -keep class com.example.share_plus.** { *; }
+
+# Flutter embedding may keep optional deferred-components references even when
+# this app doesn't use Play deferred components directly.
+-dontwarn com.google.android.play.core.tasks.OnFailureListener
+-dontwarn com.google.android.play.core.tasks.OnSuccessListener
+-dontwarn com.google.android.play.core.tasks.Task
