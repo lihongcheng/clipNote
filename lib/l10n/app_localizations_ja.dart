@@ -495,6 +495,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsVersion => 'バージョン';
 
   @override
+  String get settingsPrivacyPolicy => 'プライバシーポリシー';
+
+  @override
   String get settingsPrivacyNote =>
       'すべてのデータはデバイスにローカルで保存されます。クラウドにアップロードされることはありません。';
 

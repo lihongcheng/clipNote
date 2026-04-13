@@ -490,6 +490,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsVersion => '版本';
 
   @override
+  String get settingsPrivacyPolicy => '隐私政策';
+
+  @override
   String get settingsPrivacyNote => '所有数据均存储在您的设备本地，不会上传到云端。';
 
   @override
@@ -1016,6 +1019,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get settingsVersion => '版本';
+
+  @override
+  String get settingsPrivacyPolicy => '隱私政策';
 
   @override
   String get settingsPrivacyNote => '所有資料均儲存於您的裝置本機，不會上傳至雲端。';

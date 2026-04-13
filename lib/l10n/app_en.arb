@@ -326,6 +326,8 @@
   "@settingsAbout": {},
   "settingsVersion": "Version",
   "@settingsVersion": {},
+  "settingsPrivacyPolicy": "Privacy Policy",
+  "@settingsPrivacyPolicy": {},
   "settingsPrivacyNote": "All data is stored locally on your device. Nothing is ever uploaded to the cloud.",
   "@settingsPrivacyNote": {},
   "settingsPrivacyTitle": "Privacy First",

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/database/app_settings.dart';
 import '../../../core/services/rewarded_ad_service.dart';
@@ -67,10 +68,16 @@ class SettingsScreen extends ConsumerWidget {
                 style: TextStyle(fontWeight: FontWeight.w600)),
           ),
           ListTile(
-            leading: const Icon(Icons.code_rounded),
-            title: const Text('cn.inaiworld.clipnote'),
-            trailing: const Icon(Icons.copy_rounded, size: 16),
-            onTap: () {},
+            leading: const Icon(Icons.privacy_tip_outlined),
+            title: Text(l10n.settingsPrivacyPolicy),
+            trailing: const Icon(Icons.chevron_right_rounded, size: 20),
+            onTap: () async {
+              final uri = Uri.parse(
+                  'https://dent-tanker-8ee.notion.site/ClipNote-Clipboard-Notes-34094f7d18de80a9ab17c20c38d6a88d');
+              if (await canLaunchUrl(uri)) {
+                await launchUrl(uri, mode: LaunchMode.externalApplication);
+              }
+            },
           ),
         ],
       ),

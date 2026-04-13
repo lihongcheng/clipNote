@@ -169,6 +169,7 @@
   "settingsClearNotesConfirm": "すべてのノートを削除しますか？この操作は元に戻せません。",
   "settingsAbout": "アプリについて",
   "settingsVersion": "バージョン",
+  "settingsPrivacyPolicy": "プライバシーポリシー",
   "settingsPrivacyNote": "すべてのデータはデバイスにローカルで保存されます。クラウドにアップロードされることはありません。",
   "settingsPrivacyTitle": "プライバシー最優先",
   "actionCancel": "キャンセル",

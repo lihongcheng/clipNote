@@ -495,6 +495,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get settingsVersion => '버전';
 
   @override
+  String get settingsPrivacyPolicy => '개인정보 처리방침';
+
+  @override
   String get settingsPrivacyNote => '모든 데이터는 기기에 로컬로 저장됩니다. 클라우드에 업로드되지 않습니다.';
 
   @override

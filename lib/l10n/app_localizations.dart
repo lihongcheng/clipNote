@@ -1034,6 +1034,12 @@ abstract class AppLocalizations {
   /// **'Version'**
   String get settingsVersion;
 
+  /// No description provided for @settingsPrivacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get settingsPrivacyPolicy;
+
   /// No description provided for @settingsPrivacyNote.
   ///
   /// In en, this message translates to:

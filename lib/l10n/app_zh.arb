@@ -169,6 +169,7 @@
   "settingsClearNotesConfirm": "删除所有笔记？此操作无法撤销。",
   "settingsAbout": "关于",
   "settingsVersion": "版本",
+  "settingsPrivacyPolicy": "隐私政策",
   "settingsPrivacyNote": "所有数据均存储在您的设备本地，不会上传到云端。",
   "settingsPrivacyTitle": "隐私第一",
   "actionCancel": "取消",

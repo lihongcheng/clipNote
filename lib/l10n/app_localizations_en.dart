@@ -512,6 +512,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsVersion => 'Version';
 
   @override
+  String get settingsPrivacyPolicy => 'Privacy Policy';
+
+  @override
   String get settingsPrivacyNote =>
       'All data is stored locally on your device. Nothing is ever uploaded to the cloud.';
 

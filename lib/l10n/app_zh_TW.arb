@@ -169,6 +169,7 @@
   "settingsClearNotesConfirm": "刪除所有筆記？此操作無法復原。",
   "settingsAbout": "關於",
   "settingsVersion": "版本",
+  "settingsPrivacyPolicy": "隱私政策",
   "settingsPrivacyNote": "所有資料均儲存於您的裝置本機，不會上傳至雲端。",
   "settingsPrivacyTitle": "隱私優先",
   "actionCancel": "取消",

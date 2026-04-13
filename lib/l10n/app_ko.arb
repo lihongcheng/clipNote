@@ -169,6 +169,7 @@
   "settingsClearNotesConfirm": "모든 노트를 삭제할까요? 되돌릴 수 없습니다.",
   "settingsAbout": "앱 정보",
   "settingsVersion": "버전",
+  "settingsPrivacyPolicy": "개인정보 처리방침",
   "settingsPrivacyNote": "모든 데이터는 기기에 로컬로 저장됩니다. 클라우드에 업로드되지 않습니다.",
   "settingsPrivacyTitle": "개인정보 우선",
   "actionCancel": "취소",
