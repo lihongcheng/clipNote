@@ -22,22 +22,6 @@ class UpgradeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(16),
         children: [
           Container(
-            width: double.infinity,
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            decoration: BoxDecoration(
-              color: cs.errorContainer,
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Text(
-              'DEBUG BUILD 10',
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: cs.onErrorContainer,
-                  ),
-            ),
-          ),
-          Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -106,21 +90,6 @@ class UpgradeScreen extends ConsumerWidget {
             Text(
               _localizedError(state.error!, l10n),
               style: TextStyle(color: cs.error, fontWeight: FontWeight.w600),
-            ),
-          ],
-          if (state.debugMessage != null) ...[
-            const SizedBox(height: 8),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: cs.surfaceContainerHighest.withValues(alpha: 0.5),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: SelectableText(
-                'Billing debug: ${state.debugMessage}',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
             ),
           ],
           const SizedBox(height: 20),
