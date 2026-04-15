@@ -64,7 +64,7 @@ class SettingsScreen extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.info_outline_rounded),
             title: Text(l10n.settingsVersion),
-            trailing: const Text('1.0.0',
+            trailing: const Text('1.1.1',
                 style: TextStyle(fontWeight: FontWeight.w600)),
           ),
           ListTile(

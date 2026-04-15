@@ -51,3 +51,6 @@ app.*.map.json
 # Generated files
 lib/l10n/app_localizations.g.dart
 *.g.dart.bak
+
+# Local tooling
+.claude/settings.local.json

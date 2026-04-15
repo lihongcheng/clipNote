@@ -16,6 +16,7 @@ class MonetizationState {
     this.product,
     this.error,
     this.purchasePending = false,
+    this.debugMessage,
   });
 
   final bool isLoading;
@@ -23,6 +24,7 @@ class MonetizationState {
   final ProductDetails? product;
   final String? error;
   final bool purchasePending;
+  final String? debugMessage;
 
   MonetizationState copyWith({
     bool? isLoading,
@@ -32,6 +34,8 @@ class MonetizationState {
     String? error,
     bool clearError = false,
     bool? purchasePending,
+    String? debugMessage,
+    bool clearDebugMessage = false,
   }) {
     return MonetizationState(
       isLoading: isLoading ?? this.isLoading,
@@ -39,6 +43,7 @@ class MonetizationState {
       product: clearProduct ? null : (product ?? this.product),
       error: clearError ? null : (error ?? this.error),
       purchasePending: purchasePending ?? this.purchasePending,
+      debugMessage: clearDebugMessage ? null : (debugMessage ?? this.debugMessage),
     );
   }
 }
@@ -55,11 +60,18 @@ class MonetizationNotifier extends Notifier<MonetizationState> {
       _subscription?.cancel();
     });
     unawaited(loadProducts());
-    return const MonetizationState(isLoading: true);
+    return const MonetizationState(
+      isLoading: true,
+      debugMessage: 'start',
+    );
   }
 
   Future<void> loadProducts() async {
-    state = state.copyWith(isLoading: true, clearError: true);
+    state = state.copyWith(
+      isLoading: true,
+      clearError: true,
+      debugMessage: 'start',
+    );
     try {
       final available = await _iap.isAvailable();
       if (!available) {
@@ -67,32 +79,54 @@ class MonetizationNotifier extends Notifier<MonetizationState> {
           isLoading: false,
           isStoreAvailable: false,
           error: 'Google Play is not available on this device.',
+          debugMessage: 'isAvailable=false',
         );
-        return;
+          return;
       }
 
-      final response = await _iap.queryProductDetails({kProProductId});
+      state = state.copyWith(
+        debugMessage: 'isAvailable=true | querying product',
+      );
+
+      final response = await _iap
+          .queryProductDetails({kProProductId})
+          .timeout(const Duration(seconds: 10));
+      final debugMessage = [
+        'isAvailable=true',
+        'productDetails=${response.productDetails.length}',
+        if (response.notFoundIDs.isNotEmpty)
+          'notFoundIDs=${response.notFoundIDs.join(",")}',
+        if (response.error != null)
+          'responseError=${response.error!.code}:${response.error!.message}',
+      ].join(' | ');
+
       if (response.error != null) {
         state = state.copyWith(
           isLoading: false,
           isStoreAvailable: true,
           error: response.error!.message,
+          debugMessage: debugMessage,
         );
         return;
       }
 
-      final product =
-          response.productDetails.where((p) => p.id == kProProductId).firstOrNull;
+      final product = response.productDetails
+          .where((p) => p.id == kProProductId)
+          .firstOrNull;
       state = state.copyWith(
         isLoading: false,
         isStoreAvailable: true,
         product: product,
         clearError: true,
+        debugMessage: debugMessage,
       );
     } catch (error) {
       state = state.copyWith(
         isLoading: false,
         error: error.toString(),
+        debugMessage: error is TimeoutException
+            ? 'isAvailable=true | query timeout after 10s'
+            : 'exception=${error.runtimeType}:$error',
       );
     }
   }
